@@ -16,6 +16,8 @@ import {
   Drawer,
   List,
   ListItem,
+  FormControl,
+  FormControlLabel,
   // Icon,
   // Link,
 } from "@mui/material";
@@ -27,7 +29,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import logo from "../../assets/images/House_Logos-05.png";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-function MobileNav({ brand, english, open, setOpen }) {
+function MobileNav({ brand, english, open, setOpen, handleEnglish }) {
   const styles = {
     brand: {
       fontSize: "1.5rem",
@@ -72,6 +74,20 @@ function MobileNav({ brand, english, open, setOpen }) {
             </Typography>
           </Button>
         </ListItem>
+        <ListItem>
+          <FormControlLabel
+            control={
+              <Switch
+                // defaultChecked={true}
+                checked={english}
+                onChange={() => handleEnglish(!english)}
+                size="small"
+                color="info"
+              />
+            }
+            label="English"
+          />
+        </ListItem>
       </List>
     </Drawer>
   );
@@ -81,6 +97,7 @@ MobileNav.propTypes = {
   english: PropTypes.bool,
   open: PropTypes.bool,
   setOpen: PropTypes.func,
+  handleEnglish: PropTypes.func,
 };
 export default function Navbar({
   brand,
@@ -148,6 +165,7 @@ export default function Navbar({
                 english={english}
                 open={open}
                 setOpen={setOpen}
+                handleEnglish={handleEnglish}
               />
               <Box
                 id="navBrand"
