@@ -12,7 +12,7 @@ function App({
   english,
   favoriteList,
   cartList,
-  handleSetEnglish,
+  handleEnglish,
   handleFavoriteList,
   handleCartList,
   productList,
@@ -24,7 +24,7 @@ function App({
         <Navbar
           brand="Furniro"
           english={english}
-          handleEnglish={handleSetEnglish}
+          handleEnglish={handleEnglish}
           // spanish={spanish}
           // handleSpanish={setSpanish}
           favorites={favoriteList}
