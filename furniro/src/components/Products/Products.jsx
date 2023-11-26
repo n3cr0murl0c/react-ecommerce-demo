@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 import {
   Box,
   Card,
-  CardActionArea,
+  // CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
   IconButton,
   Stack,
   Typography,
-  useMediaQuery,
+  // useMediaQuery,
   useTheme,
 } from "@mui/material";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
@@ -21,7 +21,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 export default function Products({ english, products, handleFavoriteList }) {
   const theme = useTheme();
 
-  const isMobile = useMediaQuery(theme.breakpoints.up("md"));
+  // const isMobile = useMediaQuery(theme.breakpoints.up("md"));
   /** @type{import('@mui/material').SxProps}*/
 
   const styles = {
