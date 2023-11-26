@@ -41,53 +41,67 @@ function MobileNav({ brand, english, open, setOpen, handleEnglish }) {
   };
   return (
     <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
-      <List>
-        <ListItem>
-          <Typography sx={styles.brand}>{brand}</Typography>
-        </ListItem>
-        <ListItem>
-          <Button sx={styles.linkMenu} component={Link} to="#root">
-            <Typography variant="link">
-              {english ? "Home" : "Inicio"}
-            </Typography>
-          </Button>
-        </ListItem>
-        <ListItem>
-          <Button sx={styles.linkMenu} component={Link} to="shop">
-            <Typography variant="link">
-              {english ? "Shop" : "Tienda"}
-            </Typography>
-          </Button>
-        </ListItem>
-        <ListItem>
-          <Button sx={styles.linkMenu} component={Link} to="#about">
-            <Typography variant="link">
-              {english ? "About" : "Acerca de"}
-            </Typography>
-          </Button>
-        </ListItem>
+      <List
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          flexWrap: "wrap",
+          justifyContent: "space-between",
+          height: "100%",
+          overflowX: "hidden",
+        }}
+      >
+        <Box>
+          <ListItem>
+            <Box component={"img"} src={logo} />
+            <Typography sx={styles.brand}>{brand}</Typography>
+          </ListItem>
+          <ListItem>
+            <Button sx={styles.linkMenu} component={Link} to="#root">
+              <Typography variant="link">
+                {english ? "Home" : "Inicio"}
+              </Typography>
+            </Button>
+          </ListItem>
+          <ListItem>
+            <Button sx={styles.linkMenu} component={Link} to="shop">
+              <Typography variant="link">
+                {english ? "Shop" : "Tienda"}
+              </Typography>
+            </Button>
+          </ListItem>
+          <ListItem>
+            <Button sx={styles.linkMenu} component={Link} to="#about">
+              <Typography variant="link">
+                {english ? "About" : "Acerca de"}
+              </Typography>
+            </Button>
+          </ListItem>
 
-        <ListItem>
-          <Button sx={styles.linkMenu} component={Link} to="#contact">
-            <Typography variant="link">
-              {english ? "Contact" : "Contacto"}
-            </Typography>
-          </Button>
-        </ListItem>
-        <ListItem>
-          <FormControlLabel
-            control={
-              <Switch
-                // defaultChecked={true}
-                checked={english}
-                onChange={() => handleEnglish(!english)}
-                size="small"
-                color="info"
-              />
-            }
-            label="English"
-          />
-        </ListItem>
+          <ListItem>
+            <Button sx={styles.linkMenu} component={Link} to="#contact">
+              <Typography variant="link">
+                {english ? "Contact" : "Contacto"}
+              </Typography>
+            </Button>
+          </ListItem>
+        </Box>
+        <Box sx={{ position: "absolute", bottom: "0" }}>
+          <ListItem>
+            <FormControlLabel
+              control={
+                <Switch
+                  // defaultChecked={true}
+                  checked={english}
+                  onChange={() => handleEnglish(!english)}
+                  size="small"
+                  color="info"
+                />
+              }
+              label="English"
+            />
+          </ListItem>
+        </Box>
       </List>
     </Drawer>
   );
