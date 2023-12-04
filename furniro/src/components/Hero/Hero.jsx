@@ -14,7 +14,7 @@ import heroBg from "../../assets/images/scandinavian-interior-mockup-wall-decal-
 
 export default function Hero({ english }) {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.between("xs", "sm"));
   /** @type{import('@mui/material').SxProps}*/
   const styles = {
     mobile: {

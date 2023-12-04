@@ -18,63 +18,231 @@ export default function Layout() {
   }, [lang]);
 
   const [english, setEnglish] = React.useState(true);
-  const handleSetEnglish = () => {
-    // console.log("english:", english);
-    setEnglish((prev) => !prev);
+  const handleSetEnglish = (state) => {
+    setEnglish(state);
   };
   const [favoriteList, setFavoriteList] = React.useState(
     JSON.parse(localStorage.getItem("favList")) || []
   );
 
-  const [cartList, setCartList] = React.useState([]);
+  const [cartList, setCartList] = React.useState(
+    JSON.parse(localStorage.getItem("cartList")) || []
+  );
 
-  const productList = [
+  const [productList, setProductList] = React.useState([
     {
       id: 1,
       title: "Syltherine",
       description: "Stylish coffee table",
       image: slytherineImg,
-      price: Math.ceil(Math.random() * 300),
+      price: 359.99,
       discount: true,
       discountValue: 0.3,
-      previousPrice: Math.ceil(Math.random() * 1550),
+      previousPrice: 500,
       fav: false,
+      dateAdded: "2023-06-21",
     },
     {
       id: 2,
       title: "Leviosa",
       description: "Stylish coffee chair",
       image: leviosaImg,
-      price: Math.ceil(Math.random() * 500),
+      price: 249.99,
       discount: true,
       discountValue: 0.5,
-      previousPrice: Math.ceil(Math.random() * 1750),
+      previousPrice: 300,
       fav: false,
+      dateAdded: "2023-06-22",
     },
     {
       id: 3,
       title: "Lolito",
       description: "Luxury Big sofa",
       image: lolitoImg,
-      price: Math.ceil(Math.random() * 500),
+      price: 124.99,
       discount: true,
       discountValue: 0.25,
-      previousPrice: Math.ceil(Math.random() * 1750),
+      previousPrice: 350,
       fav: false,
+      dateAdded: "2023-06-20",
     },
     {
       id: 4,
       title: "Respira",
       description: "Outdoor bar table and stool",
       image: respiraImg,
-      price: Math.ceil(Math.random() * 500),
+      price: 99.99,
+      discount: false,
+      discountValue: 0.3,
+      previousPrice: 120,
+      new: true,
+      fav: false,
+      dateAdded: "2023-06-23",
+    },
+    {
+      id: 5,
+      title: "Respira",
+      description: "Outdoor bar table and stool",
+      image: respiraImg,
+      price: 99.99,
+      discount: false,
+      discountValue: 0.3,
+      previousPrice: 120,
+      new: true,
+      fav: false,
+      dateAdded: "2023-06-23",
+    },
+    {
+      id: 6,
+      title: "Respira",
+      description: "Outdoor bar table and stool",
+      image: respiraImg,
+      price: 99,
+      discount: false,
+      discountValue: 0.3,
+      previousPrice: 120,
+      new: true,
+      fav: false,
+      dateAdded: "2023-06-23",
+    },
+    {
+      id: 7,
+      title: "Respira",
+      description: "Outdoor bar table and stool",
+      image: respiraImg,
+      price: 39.99,
+      discount: false,
+      discountValue: 0.3,
+      previousPrice: 120,
+      new: true,
+      fav: false,
+      dateAdded: "2023-06-23",
+    },
+    {
+      id: 8,
+      title: "Respira",
+      description: "Outdoor bar table and stool",
+      image: respiraImg,
+      price: 499.99,
       discount: false,
       discountValue: 0.3,
       previousPrice: 1000,
       new: true,
       fav: false,
+      dateAdded: "2023-06-23",
     },
-  ];
+    {
+      id: 9,
+      title: "Leviosa",
+      description: "Stylish coffee chair",
+      image: leviosaImg,
+      price: 156.99,
+      discount: true,
+      discountValue: 0.5,
+      previousPrice: 250,
+      fav: false,
+      dateAdded: "2023-06-23",
+    },
+    {
+      id: 10,
+      title: "Lolito",
+      description: "Luxury Big sofa",
+      image: lolitoImg,
+      price: 15.99,
+      discount: true,
+      discountValue: 0.25,
+      previousPrice: 123.45,
+      fav: false,
+      dateAdded: "2023-06-23",
+    },
+    {
+      id: 11,
+      title: "Lolito",
+      description: "Luxury Big sofa",
+      image: lolitoImg,
+      price: 1299.99,
+      discount: true,
+      discountValue: 0.25,
+      previousPrice: 1500,
+      fav: false,
+      dateAdded: "2023-06-23",
+    },
+    {
+      id: 12,
+      title: "Lolito",
+      description: "Luxury Big sofa",
+      image: lolitoImg,
+      price: 599.99,
+      discount: true,
+      discountValue: 0.25,
+      previousPrice: 750,
+      fav: false,
+      dateAdded: "2023-06-23",
+    },
+  ]);
+
+  const handleProducts = (operation, type) => {
+    console.log(operation, " code: ", type);
+    if (operation === "order") {
+      if (type === 1) {
+        console.log("Precio en orden ascendente ");
+        let newProductList = productList.sort((a, b) => {
+          if (a.price < b.price) {
+            return 1;
+          }
+          if (a.price > b.price) {
+            return -1;
+          }
+
+          return 0;
+        });
+        console.log("Sorted List->", newProductList);
+        setProductList(newProductList);
+      } else if (type === 2) {
+        console.log("orden descendente");
+        let newProductList = productList.sort((a, b) => {
+          if (a.price > b.price) {
+            return 1;
+          }
+          if (a.price < b.price) {
+            return -1;
+          }
+
+          return 0;
+        });
+        console.log("Sorted List->", newProductList);
+        setProductList(newProductList);
+      } else if (type === 3) {
+        console.log("orden más antiguo");
+        let newProductList = productList.sort((a, b) => {
+          if (a.dateAdded > b.dateAdded) {
+            return 1;
+          }
+          if (a.dateAdded < b.dateAdded) {
+            return -1;
+          }
+
+          return 0;
+        });
+        console.log("Sorted List->", newProductList);
+        setProductList(newProductList);
+      } else if (type === 4) {
+        console.log("orden más nuev");
+        let newProductList = productList.sort((a, b) => {
+          if (a.dateAdded < b.dateAdded) {
+            return 1;
+          }
+          if (a.dateAdded > b.dateAdded) {
+            return -1;
+          }
+
+          return 0;
+        });
+        console.log("Sorted List->", newProductList);
+        setProductList(newProductList);
+      }
+    }
+  };
   const handleFavoriteList = (item) => {
     if (favoriteList.length === 0) {
       let newItem = { ...item, fav: true };
@@ -99,6 +267,56 @@ export default function Layout() {
     setCartList((prev) => [...prev, item]);
     console.warn(cartList);
   };
+
+  const addItem = (product) => {
+    let ls = JSON.parse(localStorage.getItem("cartList"));
+    console.log("en addItem: LS:", ls);
+    if (ls) {
+      console.log("en localStorage");
+      let exist = ls.find((item) => {
+        return item.id === product.id;
+      });
+
+      if (exist) {
+        exist.qty = exist.qty + 1;
+        console.log("exist en ls>exist: ", exist);
+
+        let newData = [...ls, exist];
+        localStorage.setItem("cartList", JSON.stringify(newData));
+        setCartList(newData);
+      } else {
+        if (ls) {
+          let newData = [...ls, product];
+          localStorage.setItem("cartList", JSON.stringify(newData));
+          setCartList(newData);
+        }
+      }
+    } else {
+      console.log("ls=null");
+      let exist = cartList.find((item) => {
+        return item.id === product.id;
+      });
+      if (exist) {
+        exist.qty = exist.qty + 1;
+        console.log("exist sin ls: ", exist);
+        let newData = [...ls, exist];
+        localStorage.setItem("cartList", JSON.stringify(newData));
+        setCartList(newData);
+      } else {
+        if (ls) {
+          let newData = [...ls, product];
+          localStorage.setItem("cartList", JSON.stringify(newData));
+          setCartList(newData);
+        } else {
+          let newProduct = { ...product, qty: 1 };
+          let newData = [newProduct];
+          localStorage.setItem("cartList", JSON.stringify(newData));
+          setCartList(newData);
+        }
+      }
+    }
+    console.log("cartList", cartList);
+  };
   return (
     <>
       <Router>
@@ -111,11 +329,13 @@ export default function Layout() {
               <App
                 english={english}
                 handleEnglish={handleSetEnglish}
+                // setEnglish={setEnglish}
                 favoriteList={favoriteList}
                 cartList={cartList}
                 handleCartList={handleCartList}
                 handleFavoriteList={handleFavoriteList}
                 productList={productList}
+                addItem={addItem}
               />
             }
           >
@@ -130,11 +350,13 @@ export default function Layout() {
               element={
                 <Shop
                   english={english}
+                  handleEnglish={handleSetEnglish}
                   favoriteList={favoriteList}
                   cartList={cartList}
                   handleCartList={handleCartList}
                   handleFavoriteList={handleFavoriteList}
                   productList={productList}
+                  handleProducts={handleProducts}
                 />
               }
             />

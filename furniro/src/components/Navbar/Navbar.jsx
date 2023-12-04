@@ -16,7 +16,6 @@ import {
   Drawer,
   List,
   ListItem,
-  FormControl,
   FormControlLabel,
   // Icon,
   // Link,
@@ -118,6 +117,7 @@ export default function Navbar({
   favorites,
   english,
   handleEnglish,
+  // setEnglish,
   cart,
 }) {
   // const theme = useTheme();
@@ -222,12 +222,12 @@ export default function Navbar({
                   alignItems="center"
                   sx={{ fontSize: "10px" }}
                 >
-                  <Button sx={styles.linkMenu} component={Link} to="#about">
+                  <Button sx={styles.linkMenu} component={Link} to="/">
                     <Typography variant="link">
                       {english ? "Home" : "Inicio"}
                     </Typography>
                   </Button>
-                  <Button sx={styles.linkMenu} component={Link} to="#shop">
+                  <Button sx={styles.linkMenu} component={Link} to="/shop">
                     <Typography variant="link">
                       {english ? "Shop" : "Tienda"}
                     </Typography>
@@ -299,6 +299,7 @@ Navbar.propTypes = {
   brand: PropTypes.string,
   english: PropTypes.bool,
   handleEnglish: PropTypes.func,
+  // setEnglish: PropTypes.func,
   favorites: PropTypes.array,
   cart: PropTypes.array,
 };

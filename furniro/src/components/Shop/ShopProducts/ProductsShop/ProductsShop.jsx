@@ -18,8 +18,7 @@ import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-
-export default function Products({
+export default function ProductsShop({
   english,
   products,
   handleFavoriteList,
@@ -187,18 +186,17 @@ export default function Products({
       zIndex: 1,
     },
   };
-  // const handleFlipCard = (e) => {
-  //   console.log("hover event ENTER on: ", e.target.id);
-  // };
+  //
+
   return (
-    // <div className={styles.Products}>Products Works</div>
+    // <div className={styles.ProductsShop}>ProductsShop Works</div>
     <React.Fragment>
-      <Box component="section" sx={styles.Products} id="productos">
-        <Box>
+      <Box component="section" sx={styles.Products} id="ShopProductos">
+        {/* <Box>
           <Typography variant="h1" sx={styles.header}>
             {english ? "Our Products" : "Nuestros Productos"}
           </Typography>
-        </Box>
+        </Box> */}
         <Box sx={styles.productsWrapper}>
           <Box sx={styles.productList}>
             {products.length !== 0
@@ -335,13 +333,11 @@ export default function Products({
     </React.Fragment>
   );
 }
-Products.propTypes = {
+ProductsShop.propTypes = {
   products: PropTypes.array,
   english: PropTypes.bool,
   handleFavoriteList: PropTypes.func,
   addItem: PropTypes.func,
 };
 
-Products.defaultProps = {
-  products: [],
-};
+ProductsShop.defaultProps = {};

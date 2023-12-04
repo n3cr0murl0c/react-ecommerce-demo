@@ -16,6 +16,8 @@ function App({
   handleFavoriteList,
   handleCartList,
   productList,
+  addItem,
+  // setEnglish,
 }) {
   return (
     <>
@@ -25,8 +27,7 @@ function App({
           brand="Furniro"
           english={english}
           handleEnglish={handleEnglish}
-          // spanish={spanish}
-          // handleSpanish={setSpanish}
+          // setEnglish={setEnglish}
           favorites={favoriteList}
           cart={cartList}
         />
@@ -37,6 +38,7 @@ function App({
           products={productList}
           handleFavoriteList={handleFavoriteList}
           handleCartList={handleCartList}
+          addItem={addItem}
         />
       </ThemeProvider>
     </>
@@ -51,6 +53,8 @@ App.propTypes = {
   handleSetEnglish: PropTypes.func,
   handleFavoriteList: PropTypes.func,
   handleCartList: PropTypes.func,
+  addItem: PropTypes.func,
+  // setEnglish: PropTypes.func,
   productList: PropTypes.array,
 };
 export default App;
