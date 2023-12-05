@@ -1,7 +1,14 @@
 import React from "react";
 // import cssStyles from "./Collage.module.scss";
 import PropTypes from "prop-types";
-import { Box, ImageList, ImageListItem, Typography } from "@mui/material";
+import {
+  Box,
+  ImageList,
+  ImageListItem,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 // import i36 from "../../assets/images/collage/36.png";
 import i37 from "../../assets/images/collage/37.png";
 import i38 from "../../assets/images/collage/38.png";
@@ -12,16 +19,34 @@ import i43 from "../../assets/images/collage/43.png";
 import i44 from "../../assets/images/collage/44.png";
 import i45 from "../../assets/images/collage/45.png";
 export default function Collage({ english }) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   /** @type{import('@mui/material').SxProps}*/
   const styles = {
     Collage: {
       // border: "1px dashed red",
+      display: "flex",
+      flexDirection: "column",
+      flexWrap: "nowrap",
+      alignContent: "center",
+      justifyContent: "space-between",
+      alignItems: "center",
       width: "100%",
       height: "780px",
       overflow: "hidden",
-      p: 3,
-      m: 3,
+      p: 5,
+      m: "auto",
       ImageList: { height: "90%", width: "100%", overflow: "hidden" },
+      mobile: {
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        alignContent: "center",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        maxWidth: "630px",
+        width: "450px",
+      },
     },
     imgCollage: {
       objectFit: "contain",
@@ -29,6 +54,9 @@ export default function Collage({ english }) {
       height: "350px",
       width: "350px",
       borderRadius: "10px",
+      mobile: {
+        width: "125px",
+      },
     },
   };
   const itemData = [
@@ -45,7 +73,7 @@ export default function Collage({ english }) {
   return (
     // <div className={styles.Collage}>Collage Works</div>
     <React.Fragment>
-      <Box sx={styles.Collage}>
+      <Box sx={styles.Collage} component={"section"} id={"collage"}>
         <Box sx={{ textAlign: "center" }}>
           <Typography
             sx={{
@@ -67,28 +95,53 @@ export default function Collage({ english }) {
           </Typography>
         </Box>
         <Box>
-          <ImageList
-            variant="woven"
-            cols={3}
-            gap={4}
-            sx={styles.Collage.ImageList}
-          >
-            {itemData ? (
-              itemData.map((item) => (
-                <ImageListItem key={item.img}>
-                  <img
-                    srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                    src={`${item.img}?w=248&fit=crop&auto=format`}
-                    alt={item.title}
-                    loading="lazy"
-                    style={styles.imgCollage}
-                  />
-                </ImageListItem>
-              ))
-            ) : (
-              <Typography>{"no image data"}</Typography>
-            )}
-          </ImageList>
+          {isMobile ? (
+            <ImageList
+              variant="woven"
+              cols={2}
+              gap={2}
+              sx={styles.Collage.mobile}
+            >
+              {itemData ? (
+                itemData.map((item) => (
+                  <ImageListItem key={item.img}>
+                    <img
+                      srcSet={`${item.img}?w=350&fit=crop&auto=format&dpr=2 2x`}
+                      src={`${item.img}?w=350&fit=crop&auto=format`}
+                      alt={item.title}
+                      loading="lazy"
+                      style={styles.imgCollage.mobile}
+                    />
+                  </ImageListItem>
+                ))
+              ) : (
+                <Typography>{"no image data"}</Typography>
+              )}
+            </ImageList>
+          ) : (
+            <ImageList
+              variant="woven"
+              cols={3}
+              gap={4}
+              sx={styles.Collage.ImageList}
+            >
+              {itemData ? (
+                itemData.map((item) => (
+                  <ImageListItem key={item.img}>
+                    <img
+                      srcSet={`${item.img}?w=350&fit=crop&auto=format&dpr=2 2x`}
+                      src={`${item.img}?w=350&fit=crop&auto=format`}
+                      alt={item.title}
+                      loading="lazy"
+                      style={styles.imgCollage}
+                    />
+                  </ImageListItem>
+                ))
+              ) : (
+                <Typography>{"no image data"}</Typography>
+              )}
+            </ImageList>
+          )}
         </Box>
       </Box>
     </React.Fragment>
