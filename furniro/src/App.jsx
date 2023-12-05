@@ -7,7 +7,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import "./App.css";
 import Browse from "./components/Browse/Browse";
 import customTheme from "./config/theme";
-import Slideshow from "./components/Slideshow/Slideshow";
+// import Slideshow from "./components/Slideshow/Slideshow";
 import Collage from "./components/Collage/Collage";
 import Footer from "./components/Footer/Footer";
 import { Box } from "@mui/material";
@@ -44,9 +44,9 @@ function App({
             handleCartList={handleCartList}
             addItem={addItem}
           />
-          <Slideshow english={english} />
+          {/* <Slideshow english={english} /> */}
           <Collage english={english} />
-          <Footer english={english} />
+          {/* <Footer english={english} /> */}
         </Box>
       </ThemeProvider>
     </>

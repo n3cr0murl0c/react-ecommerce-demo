@@ -20,7 +20,7 @@ export default function Collage({ english }) {
       height: "780px",
       overflow: "hidden",
       p: 3,
-      m: 0,
+      m: 3,
       ImageList: { height: "90%", width: "100%", overflow: "hidden" },
     },
     imgCollage: {
