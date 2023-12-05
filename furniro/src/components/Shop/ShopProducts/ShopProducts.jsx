@@ -44,7 +44,7 @@ export default function ShopProducts({
           orderTypes={orderTypes}
           handleOrderChange={handleOrderChange}
         />
-        <ProductsShop products={products} />
+        <ProductsShop products={products} english={english} />
       </Box>
     </React.Fragment>
   );
