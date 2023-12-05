@@ -15,9 +15,10 @@ let theme = createTheme({
     },
     text: {
       black: "#212121",
+      grey: "#898989",
     },
     secondary: {
-      main: "#757de8",
+      main: "#FAF3EA",
     },
     neutral: {
       light: "#FFFFFF",

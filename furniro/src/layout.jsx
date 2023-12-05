@@ -77,7 +77,7 @@ export default function Layout() {
       previousPrice: 120,
       new: true,
       fav: false,
-      dateAdded: "2023-06-23",
+      dateAdded: "2023-12-04",
     },
     {
       id: 5,
@@ -184,7 +184,7 @@ export default function Layout() {
   const handleProducts = (operation, type) => {
     console.log(operation, " code: ", type);
     if (operation === "order") {
-      if (type === 1) {
+      if (type === 2) {
         console.log("Precio en orden ascendente ");
         let newProductList = productList.sort((a, b) => {
           if (a.price < b.price) {
@@ -198,7 +198,7 @@ export default function Layout() {
         });
         console.log("Sorted List->", newProductList);
         setProductList(newProductList);
-      } else if (type === 2) {
+      } else if (type === 1) {
         console.log("orden descendente");
         let newProductList = productList.sort((a, b) => {
           if (a.price > b.price) {

@@ -19,8 +19,8 @@ export default function Hero({ english }) {
   const styles = {
     mobile: {
       wrapper: {
-        height: "calc(100% - 80px)",
-        maxHeight: "calc(100% - 80px)",
+        height: "calc(650px - 80px)",
+        // maxHeight: "calc(100% - 80px)",
         width: "100%",
         // backgroundColor: "papayawhip",
         backgroundImage: `url(${heroBg})`,
@@ -81,8 +81,9 @@ export default function Hero({ english }) {
     },
     wrapper: {
       // height: "calc(100%-80px)",
-      height: "calc(100% - 80px)",
-      width: "100%",
+      height: "700px",
+      // maxHeight: "calc(100% - 80px)",
+      // width: "100%",
       // backgroundColor: "papayawhip",
       backgroundImage: `url(${heroBg})`,
       backgroundSize: "cover",
@@ -90,7 +91,9 @@ export default function Hero({ english }) {
       backgroundRepeat: "no-repeat",
       // backgroundSize:"",
       position: "relative",
-      m: 0,
+      // overflow: "auto",
+      // m: 0,
+      // p: 0,
     },
 
     HeroContainer: {

@@ -7,7 +7,10 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import "./App.css";
 import Browse from "./components/Browse/Browse";
 import customTheme from "./config/theme";
-
+import Slideshow from "./components/Slideshow/Slideshow";
+import Collage from "./components/Collage/Collage";
+import Footer from "./components/Footer/Footer";
+import { Box } from "@mui/material";
 function App({
   english,
   favoriteList,
@@ -31,15 +34,20 @@ function App({
           favorites={favoriteList}
           cart={cartList}
         />
-        <Hero english={english} />
-        <Browse english={english} />
-        <Products
-          english={english}
-          products={productList}
-          handleFavoriteList={handleFavoriteList}
-          handleCartList={handleCartList}
-          addItem={addItem}
-        />
+        <Box component={"main"} sx={{ m: 0, p: 0 }}>
+          <Hero english={english} />
+          <Browse english={english} />
+          <Products
+            english={english}
+            products={productList}
+            handleFavoriteList={handleFavoriteList}
+            handleCartList={handleCartList}
+            addItem={addItem}
+          />
+          <Slideshow english={english} />
+          <Collage english={english} />
+          <Footer english={english} />
+        </Box>
       </ThemeProvider>
     </>
   );
