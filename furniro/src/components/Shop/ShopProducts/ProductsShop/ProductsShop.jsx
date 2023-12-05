@@ -164,7 +164,7 @@ export default function ProductsShop({
           </Box>
           <Box sx={styles.shopAttributes.txtColumn}>
             <Typography sx={styles.shopAttributes.header}>
-              {english ? "24// Support" : "Soporte 24/7"}
+              {english ? "24/7 Support" : "Soporte 24/7"}
             </Typography>
             <Typography sx={styles.shopAttributes.description}>
               {english ? "Dedicated Support" : "Soporte Dedicado"}
