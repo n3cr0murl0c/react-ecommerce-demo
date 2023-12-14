@@ -9,7 +9,7 @@ import Browse from "./components/Browse/Browse";
 import customTheme from "./config/theme";
 // import Slideshow from "./components/Slideshow/Slideshow";
 import Collage from "./components/Collage/Collage";
-// import Footer from "./components/Footer/Footer";
+import Footer from "./components/Footer/Footer";
 import { Box } from "@mui/material";
 function App({
   english,
@@ -46,7 +46,7 @@ function App({
           />
           {/* <Slideshow english={english} /> */}
           <Collage english={english} />
-          {/* <Footer english={english} /> */}
+          <Footer english={english} />
         </Box>
       </ThemeProvider>
     </>

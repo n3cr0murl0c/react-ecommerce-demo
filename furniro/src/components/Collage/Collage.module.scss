@@ -6,3 +6,52 @@
     object-fit: cover;
     object-position: center center;
 }
+
+.ImageList{
+    // border: 1px solid red;
+    height: 650px;
+    width: 110vw;
+    overflow: hidden;
+    ul{
+        overflow: hidden;
+    }
+    li{
+        
+        height: 450px;
+        width: 350px;
+        border-radius: 10px;
+        overflow: hidden;
+        img{
+        //     background-position: "center center";
+        // background-repeat: no-repeat;
+        // background-size: cover;
+        object-fit: cover;
+        // object-fit: contain;
+        object-position: cover cover;
+        }
+    }
+    
+}
+.uImge{
+    
+    overflow-y: hidden;
+    animation: scrollDown 6s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+}
+
+@keyframes scrollDown{
+    0%{
+        margin-left: -100px;
+    }
+    25%{
+        margin-left: -50px;
+    }
+    50%{
+        margin-left: 0px;
+    }
+    75%{
+        margin-left: 50px;
+    }
+    100%{
+        margin-left: 100px;
+    }
+}

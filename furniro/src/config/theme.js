@@ -19,6 +19,7 @@ let theme = createTheme({
     },
     secondary: {
       main: "#FAF3EA",
+      variant: "#F9F1E7",
     },
     neutral: {
       light: "#FFFFFF",

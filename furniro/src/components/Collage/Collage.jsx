@@ -1,5 +1,5 @@
 import React from "react";
-// import cssStyles from "./Collage.module.scss";
+import cssStyles from "./Collage.module.scss";
 import PropTypes from "prop-types";
 import {
   Box,
@@ -32,11 +32,11 @@ export default function Collage({ english }) {
       justifyContent: "space-between",
       alignItems: "center",
       width: "100%",
-      height: "780px",
+      height: "545px",
       overflow: "hidden",
-      p: 5,
-      m: "auto",
-      ImageList: { height: "90%", width: "100%", overflow: "hidden" },
+      p: 0,
+      m: 0,
+
       mobile: {
         display: "flex",
         flexDirection: "row",
@@ -51,8 +51,9 @@ export default function Collage({ english }) {
     imgCollage: {
       objectFit: "contain",
       objectPosition: "cover cover",
-      height: "350px",
+      height: "450px",
       width: "350px",
+
       borderRadius: "10px",
       mobile: {
         width: "125px",
@@ -94,7 +95,7 @@ export default function Collage({ english }) {
             {english ? "#FurniroFurniture" : "#MueblesFurniro"}
           </Typography>
         </Box>
-        <Box>
+        <Box sx={{ overflow: "hidden" }}>
           {isMobile ? (
             <ImageList
               variant="woven"
@@ -121,19 +122,22 @@ export default function Collage({ english }) {
           ) : (
             <ImageList
               variant="woven"
-              cols={3}
-              gap={4}
-              sx={styles.Collage.ImageList}
+              cols={4}
+              gap={1}
+              // sx={styles.Collage.ImageList}
+              className={cssStyles.ImageList}
+              id="imageListSM"
             >
               {itemData ? (
                 itemData.map((item) => (
-                  <ImageListItem key={item.img}>
-                    <img
-                      srcSet={`${item.img}?w=350&fit=crop&auto=format&dpr=2 2x`}
-                      src={`${item.img}?w=350&fit=crop&auto=format`}
+                  <ImageListItem key={item.img} className={cssStyles.uImge}>
+                    <Box
+                      component={"img"}
+                      srcSet={item.img}
+                      src={item.img}
                       alt={item.title}
                       loading="lazy"
-                      style={styles.imgCollage}
+                      sx={styles.imgCollage}
                     />
                   </ImageListItem>
                 ))

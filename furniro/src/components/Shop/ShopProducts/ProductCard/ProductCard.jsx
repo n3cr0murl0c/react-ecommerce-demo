@@ -3,6 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {
   Box,
+  Button,
   Card,
   // CardActionArea,
   CardActions,
@@ -18,6 +19,7 @@ import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { Link } from "react-router-dom";
 export default function ProductCard({
   item,
   handleFavoriteList,
@@ -226,14 +228,16 @@ export default function ProductCard({
           <CardMedia
             component={"img"}
             height={"300px"}
-            image={item.image}
+            image={item.images[0]}
             alt={item.title}
             id={String(item.title) + "-" + String(item.id) + "-img"}
           />
 
           <CardContent sx={{ py: 1, px: 3 }}>
             <Typography sx={styles.title}>{item.title}</Typography>
-            <Typography sx={styles.description}>{item.description}</Typography>
+            <Typography sx={styles.description}>
+              {item.quickDescription}
+            </Typography>
             <Stack direction={"row"} spacing={5}>
               <Typography sx={styles.price}>
                 {"$ " + String(item.price)}
@@ -260,12 +264,12 @@ export default function ProductCard({
               name="buttons"
               sx={{ zIndex: "1200" }}
             >
-              <IconButton>
+              <Button component={Link} to={`product/${item.id}`}>
                 <CompareArrowsOutlinedIcon fontSize="small" />
                 <Typography sx={styles.actionButtons}>
-                  {english ? "Compare" : "Comparar"}
+                  {english ? "More info" : "Ver más"}
                 </Typography>
-              </IconButton>
+              </Button>
               <IconButton onClick={() => addItem(item)}>
                 <ShoppingCartOutlinedIcon fontSize="small" />
                 <Typography sx={styles.actionButtons}>

@@ -1,14 +1,12 @@
 import React from "react";
 // import styles from "./Shop.module.scss";
 import PropTypes from "prop-types";
-import Navbar from "../Navbar/Navbar";
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import Breacrumb from "./Breacrumb/Breacrumb";
-import customTheme from "../../config/theme";
+
 import ShopProducts from "./ShopProducts/ShopProducts";
+import Breacrumb from "./Breacrumb/Breacrumb";
 export default function Shop({
   english,
-  handleEnglish,
+
   favoriteList,
   cartList,
   handleFavoriteList,
@@ -54,36 +52,23 @@ export default function Shop({
   };
   return (
     <>
-      <ThemeProvider theme={customTheme}>
-        <CssBaseline />
-        <Navbar
-          brand="Furniro"
-          english={english}
-          handleEnglish={handleEnglish}
-          // spanish={spanish}
-          // handleSpanish={setSpanish}
-          favorites={favoriteList}
-          cart={cartList}
-        />
-        <Breacrumb english={english} />
-
-        <ShopProducts
-          english={english}
-          products={productList}
-          favoriteList={favoriteList}
-          cartList={cartList}
-          handleFavoriteList={handleFavoriteList}
-          handleCartList={handleCartList}
-          listView={listView}
-          setListView={setListView}
-          numberShow={numberShow}
-          setNumberShow={setNumberShow}
-          sortBy={sortBy}
-          orderTypes={orderTypes}
-          handleOrderChange={handleOrderChange}
-          handleProducts={handleProducts}
-        />
-      </ThemeProvider>
+      <Breacrumb english={english} />
+      <ShopProducts
+        english={english}
+        products={productList}
+        favoriteList={favoriteList}
+        cartList={cartList}
+        handleFavoriteList={handleFavoriteList}
+        handleCartList={handleCartList}
+        listView={listView}
+        setListView={setListView}
+        numberShow={numberShow}
+        setNumberShow={setNumberShow}
+        sortBy={sortBy}
+        orderTypes={orderTypes}
+        handleOrderChange={handleOrderChange}
+        handleProducts={handleProducts}
+      />
     </>
   );
 }
